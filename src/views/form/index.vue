@@ -15,18 +15,18 @@
         >
           <el-option
             label="Zone one"
-            value="shanghai"
+            value="hanoi"
           />
           <el-option
             label="Zone two"
-            value="beijing"
+            value="danang"
           />
         </el-select>
       </el-form-item>
       <el-form-item label="Activity time">
         <el-col :span="11">
           <el-date-picker
-            v-model="form.date1"
+            v-model="form.activityDate"
             type="date"
             placeholder="Pick a date"
             style="width: 100%;"
@@ -40,7 +40,7 @@
         </el-col>
         <el-col :span="11">
           <el-time-picker
-            v-model="form.date2"
+            v-model="form.activityTime"
             type="fixed-time"
             placeholder="Pick a time"
             style="width: 100%;"
@@ -78,7 +78,7 @@
       </el-form-item>
       <el-form-item label="Activity form">
         <el-input
-          v-model="form.desc"
+          v-model="form.description"
           type="textarea"
         />
       </el-form-item>
@@ -99,20 +99,21 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { IForm } from '@/types/form'
 
 @Component({
   name: 'Form'
 })
 export default class extends Vue {
-  private form = {
+  private form: IForm = {
     name: '',
     region: '',
-    date1: '',
-    date2: '',
+    activityDate: null,
+    activityTime: null,
     delivery: false,
     type: [],
     resource: '',
-    desc: ''
+    description: ''
   };
 
   private onSubmit() {
