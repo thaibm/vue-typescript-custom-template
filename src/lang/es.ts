@@ -1,32 +1,13 @@
 export default {
   route: {
     dashboard: 'Panel de control',
-    documentation: 'Documentación',
-    guide: 'Guía',
-    permission: 'Permisos',
-    rolePermission: 'Permisos de rol',
-    pagePermission: 'Permisos de la página',
-    directivePermission: 'Permisos de la directiva',
     icons: 'Iconos',
     components: 'Componentes',
     tinymce: 'Tinymce',
     markdown: 'Markdown',
-    jsonEditor: 'Editor JSON',
-    splitPane: 'Panel dividido',
     avatarUpload: 'Subir avatar',
     dropzone: 'Subir ficheros',
-    sticky: 'Sticky',
-    countTo: 'Count To',
-    componentMixin: 'Mixin',
     backToTop: 'Ir arriba',
-    draggableDialog: 'Draggable Dialog',
-    draggableKanban: 'Draggable Kanban',
-    draggableList: 'Draggable List',
-    draggableSelect: 'Draggable Select',
-    charts: 'Gráficos',
-    barChart: 'Bar Chart',
-    lineChart: 'Gráfico de líneas',
-    mixedChart: 'Mixed Chart',
     example: 'Ejemplo',
     nested: 'Rutas anidadass',
     menu1: 'Menu 1',
@@ -49,17 +30,7 @@ export default {
     errorPages: 'Páginas de error',
     page401: '401',
     page404: '404',
-    errorLog: 'Registro de errores',
-    excel: 'Excel',
-    exportExcel: 'Exportar a Excel',
-    selectExcel: 'Export seleccionado',
-    mergeHeader: 'Merge Header',
-    uploadExcel: 'Subir Excel',
-    zip: 'Zip',
-    pdf: 'PDF',
-    exportZip: 'Exportar a Zip',
     theme: 'Tema',
-    clipboard: 'Clipboard',
     i18n: 'I18n',
     externalLink: 'Enlace externo',
     profile: 'Profile'
@@ -80,24 +51,6 @@ export default {
     any: 'nada',
     thirdparty: 'Conectar con',
     thirdpartyTips: 'No se puede simular en local, así que combine su propia simulación de negocios. ! !'
-  },
-  documentation: {
-    documentation: 'Documentación',
-    github: 'Repositorio Github'
-  },
-  permission: {
-    createRole: 'Nuevo rol',
-    editPermission: 'Permiso de edición',
-    roles: 'Tus permisos',
-    switchRoles: 'Cambiar permisos',
-    tips: 'In some cases it is not suitable to use v-permission, such as element Tab component or el-table-column and other asynchronous rendering dom cases which can only be achieved by manually setting the v-if.',
-    delete: 'Borrar',
-    confirm: 'Confirmar',
-    cancel: 'Cancelar'
-  },
-  guide: {
-    description: 'The guide page is useful for some people who entered the project for the first time. You can briefly introduce the features of the project. Demo is based on ',
-    button: 'Ver guía'
   },
   components: {
     documentation: 'Documentación',
@@ -135,23 +88,6 @@ export default {
   },
   example: {
     warning: 'Creating and editing pages cannot be cached by keep-alive because keep-alive include does not currently support caching based on routes, so it is currently cached based on component name. If you want to achieve a similar caching effect, you can use a browser caching scheme such as localStorage. Or do not use keep-alive include to cache all pages directly. See details'
-  },
-  errorLog: {
-    tips: 'Please click the bug icon in the upper right corner',
-    description: 'Now the management system are basically the form of the spa, it enhances the user experience, but it also increases the possibility of page problems, a small negligence may lead to the entire page deadlock. Fortunately Vue provides a way to catch handling exceptions, where you can handle errors or report exceptions.',
-    documentation: 'Documento de introducción'
-  },
-  excel: {
-    export: 'Exportar',
-    selectedExport: 'Exportar seleccionados',
-    placeholder: 'Por favor escribe un nombre de fichero'
-  },
-  zip: {
-    export: 'Exportar',
-    placeholder: 'Por favor escribe un nombre de fichero'
-  },
-  pdf: {
-    tips: 'Here we use window.print() to implement the feature of downloading PDF.'
   },
   theme: {
     change: 'Cambiar tema',

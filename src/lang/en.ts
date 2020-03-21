@@ -1,32 +1,13 @@
 export default {
   route: {
     dashboard: 'Dashboard',
-    documentation: 'Documentation',
-    guide: 'Guide',
-    permission: 'Permission',
-    pagePermission: 'Page Permission',
-    rolePermission: 'Role Permission',
-    directivePermission: 'Directive Permission',
     icons: 'Icons',
     components: 'Components',
     tinymce: 'Tinymce',
     markdown: 'Markdown',
-    jsonEditor: 'JSON Editor',
-    splitPane: 'SplitPane',
     avatarUpload: 'Avatar Upload',
     dropzone: 'Dropzone',
-    sticky: 'Sticky',
-    countTo: 'Count To',
-    componentMixin: 'Mixin',
     backToTop: 'Back To Top',
-    draggableDialog: 'Draggable Dialog',
-    draggableKanban: 'Draggable Kanban',
-    draggableList: 'Draggable List',
-    draggableSelect: 'Draggable Select',
-    charts: 'Charts',
-    barChart: 'Bar Chart',
-    lineChart: 'Line Chart',
-    mixedChart: 'Mixed Chart',
     example: 'Example',
     nested: 'Nested Routes',
     menu1: 'Menu 1',
@@ -41,7 +22,6 @@ export default {
     draggableTable: 'Draggable Table',
     inlineEditTable: 'Inline Edit Table',
     complexTable: 'Complex Table',
-    tab: 'Tab',
     form: 'Form',
     createArticle: 'Create Article',
     editArticle: 'Edit Article',
@@ -49,17 +29,10 @@ export default {
     errorPages: 'Error Pages',
     page401: '401',
     page404: '404',
-    errorLog: 'Error Log',
-    excel: 'Excel',
     exportExcel: 'Export Excel',
     selectExcel: 'Export Selected',
     mergeHeader: 'Merge Header',
-    uploadExcel: 'Upload Excel',
-    zip: 'Zip',
-    pdf: 'PDF',
-    exportZip: 'Export Zip',
     theme: 'Theme',
-    clipboard: 'Clipboard',
     i18n: 'I18n',
     externalLink: 'External Link',
     profile: 'Profile'
@@ -80,24 +53,6 @@ export default {
     any: 'any',
     thirdparty: 'Or connect with',
     thirdpartyTips: 'Can not be simulated on local, so please combine you own business simulation! ! !'
-  },
-  documentation: {
-    documentation: 'Documentation',
-    github: 'Github Repository'
-  },
-  permission: {
-    createRole: 'New Role',
-    editPermission: 'Edit',
-    roles: 'Your roles',
-    switchRoles: 'Switch roles',
-    tips: 'In some cases, using v-permission will have no effect. For example: Element-UI  el-tab or el-table-column and other scenes that dynamically render dom. You can only do this with v-if.',
-    delete: 'Delete',
-    confirm: 'Confirm',
-    cancel: 'Cancel'
-  },
-  guide: {
-    description: 'The guide page is useful for some people who entered the project for the first time. You can briefly introduce the features of the project. Demo is based on ',
-    button: 'Show Guide'
   },
   components: {
     documentation: 'Documentation',
@@ -135,23 +90,6 @@ export default {
   },
   example: {
     warning: 'Creating and editing pages cannot be cached by keep-alive because keep-alive\'s \'include\' currently does not support caching based on routes, so now it\'s cached based on component name. If you want to achieve a similar caching effect, you can use a browser caching scheme such as localStorage. Or don\'t use keep-alive\'s \'include\' to cache all pages directly. See details'
-  },
-  errorLog: {
-    tips: 'Please click the bug icon in the upper right corner',
-    description: 'Now the management system are basically the form of the spa, it enhances the user experience, but it also increases the possibility of page problems, a small negligence may lead to the entire page deadlock. Fortunately Vue provides a way to catch handling exceptions, where you can handle errors or report exceptions.',
-    documentation: 'Document introduction'
-  },
-  excel: {
-    export: 'Export',
-    selectedExport: 'Export Selected Items',
-    placeholder: 'Please enter the file name (default excel-list)'
-  },
-  zip: {
-    export: 'Export',
-    placeholder: 'Please enter the file name (default file)'
-  },
-  pdf: {
-    tips: 'Here we use window.print() to implement the feature of downloading PDF.'
   },
   theme: {
     change: 'Change Theme',
