@@ -3,8 +3,9 @@ import { Message, MessageBox } from 'element-ui'
 import { UserModule } from '@/store/modules/user'
 
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API,
+  baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
   timeout: 5000
+  // withCredentials: true // send cookies when cross-domain requests
 })
 
 // Request interceptors
@@ -41,11 +42,11 @@ service.interceptors.response.use(
       })
       if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
         MessageBox.confirm(
-          'You have been logged out, try to login again.',
-          'Log out',
+          '你已被登出，可以取消继续留在该页面，或者重新登录',
+          '确定登出',
           {
-            confirmButtonText: 'Relogin',
-            cancelButtonText: 'Cancel',
+            confirmButtonText: '重新登录',
+            cancelButtonText: '取消',
             type: 'warning'
           }
         ).then(() => {

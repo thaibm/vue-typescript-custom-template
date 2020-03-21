@@ -11,6 +11,19 @@
       class="breadcrumb-container"
     />
     <div class="right-menu">
+      <template v-if="device!=='mobile'">
+        <header-search class="right-menu-item" />
+        <error-log class="errLog-container right-menu-item hover-effect" />
+        <screenfull class="right-menu-item hover-effect" />
+        <el-tooltip
+          :content="$t('navbar.size')"
+          effect="dark"
+          placement="bottom"
+        >
+          <size-select class="right-menu-item hover-effect" />
+        </el-tooltip>
+        <lang-select class="right-menu-item hover-effect" />
+      </template>
       <el-dropdown
         class="avatar-container right-menu-item hover-effect"
         trigger="click"
@@ -23,9 +36,14 @@
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown">
+          <router-link to="/profile/">
+            <el-dropdown-item>
+              {{ $t('navbar.profile') }}
+            </el-dropdown-item>
+          </router-link>
           <router-link to="/">
             <el-dropdown-item>
-              Home
+              {{ $t('navbar.dashboard') }}
             </el-dropdown-item>
           </router-link>
           <a
@@ -33,22 +51,22 @@
             href="https://github.com/armour/vue-typescript-admin-template/"
           >
             <el-dropdown-item>
-              Github
+              {{ $t('navbar.github') }}
             </el-dropdown-item>
           </a>
           <a
             target="_blank"
             href="https://armour.github.io/vue-typescript-admin-docs/"
           >
-            <el-dropdown-item>
-              Docs
-            </el-dropdown-item>
+            <el-dropdown-item>Docs</el-dropdown-item>
           </a>
-          <el-dropdown-item divided>
-            <span
-              style="display:block;"
-              @click="logout"
-            >LogOut</span>
+          <el-dropdown-item
+            divided
+            @click.native="logout"
+          >
+            <span style="display:block;">
+              {{ $t('navbar.logOut') }}
+            </span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -61,13 +79,23 @@ import { Component, Vue } from 'vue-property-decorator'
 import { AppModule } from '@/store/modules/app'
 import { UserModule } from '@/store/modules/user'
 import Breadcrumb from '@/components/Breadcrumb/index.vue'
+import ErrorLog from '@/components/ErrorLog/index.vue'
 import Hamburger from '@/components/Hamburger/index.vue'
+import HeaderSearch from '@/components/HeaderSearch/index.vue'
+import LangSelect from '@/components/LangSelect/index.vue'
+import Screenfull from '@/components/Screenfull/index.vue'
+import SizeSelect from '@/components/SizeSelect/index.vue'
 
 @Component({
   name: 'Navbar',
   components: {
     Breadcrumb,
-    Hamburger
+    ErrorLog,
+    Hamburger,
+    HeaderSearch,
+    LangSelect,
+    Screenfull,
+    SizeSelect
   }
 })
 export default class extends Vue {
@@ -118,6 +146,11 @@ export default class extends Vue {
 
   .breadcrumb-container {
     float: left;
+  }
+
+  .errLog-container {
+    display: inline-block;
+    vertical-align: top;
   }
 
   .right-menu {

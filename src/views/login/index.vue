@@ -10,8 +10,9 @@
     >
       <div class="title-container">
         <h3 class="title">
-          Login Form
+          {{ $t('login.title') }}
         </h3>
+        <lang-select class="set-language" />
       </div>
 
       <el-form-item prop="username">
@@ -21,34 +22,45 @@
         <el-input
           ref="username"
           v-model="loginForm.username"
+          :placeholder="$t('login.username')"
           name="username"
           type="text"
+          tabindex="1"
           autocomplete="on"
-          placeholder="username"
         />
       </el-form-item>
 
-      <el-form-item prop="password">
-        <span class="svg-container">
-          <svg-icon name="password" />
-        </span>
-        <el-input
-          :key="passwordType"
-          ref="password"
-          v-model="loginForm.password"
-          :type="passwordType"
-          placeholder="password"
-          name="password"
-          autocomplete="on"
-          @keyup.enter.native="handleLogin"
-        />
-        <span
-          class="show-pwd"
-          @click="showPwd"
-        >
-          <svg-icon :name="passwordType === 'password' ? 'eye-off' : 'eye-on'" />
-        </span>
-      </el-form-item>
+      <el-tooltip
+        v-model="capsTooltip"
+        content="Caps lock is On"
+        placement="right"
+        manual
+      >
+        <el-form-item prop="password">
+          <span class="svg-container">
+            <svg-icon name="password" />
+          </span>
+          <el-input
+            :key="passwordType"
+            ref="password"
+            v-model="loginForm.password"
+            :type="passwordType"
+            :placeholder="$t('login.password')"
+            name="password"
+            tabindex="2"
+            autocomplete="on"
+            @keyup.native="checkCapslock"
+            @blur="capsTooltip = false"
+            @keyup.enter.native="handleLogin"
+          />
+          <span
+            class="show-pwd"
+            @click="showPwd"
+          >
+            <svg-icon :name="passwordType === 'password' ? 'eye-off' : 'eye-on'" />
+          </span>
+        </el-form-item>
+      </el-tooltip>
 
       <el-button
         :loading="loading"
@@ -56,16 +68,39 @@
         style="width:100%; margin-bottom:30px;"
         @click.native.prevent="handleLogin"
       >
-        Sign in
+        {{ $t('login.logIn') }}
       </el-button>
 
       <div style="position:relative">
         <div class="tips">
-          <span> username: admin </span>
-          <span> password: any </span>
+          <span>{{ $t('login.username') }} : admin </span>
+          <span>{{ $t('login.password') }} : {{ $t('login.any') }} </span>
         </div>
+        <div class="tips">
+          <span>{{ $t('login.username') }} : editor </span>
+          <span>{{ $t('login.password') }} : {{ $t('login.any') }} </span>
+        </div>
+
+        <el-button
+          class="thirdparty-button"
+          type="primary"
+          @click="showDialog=true"
+        >
+          {{ $t('login.thirdparty') }}
+        </el-button>
       </div>
     </el-form>
+
+    <el-dialog
+      :title="$t('login.thirdparty')"
+      :visible.sync="showDialog"
+    >
+      {{ $t('login.thirdpartyTips') }}
+      <br>
+      <br>
+      <br>
+      <social-sign />
+    </el-dialog>
   </div>
 </template>
 
@@ -76,9 +111,15 @@ import { Dictionary } from 'vue-router/types/router'
 import { Form as ElForm, Input } from 'element-ui'
 import { UserModule } from '@/store/modules/user'
 import { isValidUsername } from '@/utils/validate'
+import LangSelect from '@/components/LangSelect/index.vue'
+import SocialSign from './components/SocialSignin.vue'
 
 @Component({
-  name: 'Login'
+  name: 'Login',
+  components: {
+    LangSelect,
+    SocialSign
+  }
 })
 export default class extends Vue {
   private validateUsername = (rule: any, value: string, callback: Function) => {
@@ -106,6 +147,7 @@ export default class extends Vue {
   private passwordType = 'password'
   private loading = false
   private showDialog = false
+  private capsTooltip = false
   private redirect?: string
   private otherQuery: Dictionary<string> = {}
 
@@ -126,6 +168,11 @@ export default class extends Vue {
     } else if (this.loginForm.password === '') {
       (this.$refs.password as Input).focus()
     }
+  }
+
+  private checkCapslock(e: KeyboardEvent) {
+    const { key } = e
+    this.capsTooltip = key !== null && key.length === 1 && (key >= 'A' && key <= 'Z')
   }
 
   private showPwd() {
@@ -256,6 +303,15 @@ export default class extends Vue {
       text-align: center;
       font-weight: bold;
     }
+
+    .set-language {
+      color: #fff;
+      position: absolute;
+      top: 3px;
+      font-size: 18px;
+      right: 0px;
+      cursor: pointer;
+    }
   }
 
   .show-pwd {
@@ -266,6 +322,18 @@ export default class extends Vue {
     color: $darkGray;
     cursor: pointer;
     user-select: none;
+  }
+
+  .thirdparty-button {
+    position: absolute;
+    right: 0;
+    bottom: 6px;
+  }
+
+  @media only screen and (max-width: 470px) {
+    .thirdparty-button {
+      display: none;
+    }
   }
 }
 </style>
