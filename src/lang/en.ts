@@ -18,6 +18,7 @@ export default {
     'menu1-3': 'Menu 1-3',
     menu2: 'Menu 2',
     table: 'Table',
+    basicTable: 'Basic Table',
     dynamicTable: 'Dynamic Table',
     draggableTable: 'Draggable Table',
     inlineEditTable: 'Inline Edit Table',

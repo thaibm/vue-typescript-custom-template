@@ -203,22 +203,6 @@ export const asyncRoutes: RouteConfig[] = [
     ]
   },
   {
-    path: '/theme',
-    component: Layout,
-    redirect: 'noredirect',
-    children: [
-      {
-        path: 'index',
-        component: () => import(/* webpackChunkName: "theme" */ '@/views/theme/index.vue'),
-        name: 'Theme',
-        meta: {
-          title: 'theme',
-          icon: 'theme'
-        }
-      }
-    ]
-  },
-  {
     path: '/i18n',
     component: Layout,
     children: [

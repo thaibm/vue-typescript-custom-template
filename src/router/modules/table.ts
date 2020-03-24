@@ -12,6 +12,12 @@ const tableRoutes: RouteConfig = {
   },
   children: [
     {
+      path: 'basic-table',
+      component: () => import(/* webpackChunkName: "dynamic-table" */ '@/views/table/basic-table.vue'),
+      name: 'BasicTable',
+      meta: { title: 'basicTable' }
+    },
+    {
       path: 'dynamic-table',
       component: () => import(/* webpackChunkName: "dynamic-table" */ '@/views/table/dynamic-table/index.vue'),
       name: 'DynamicTable',
